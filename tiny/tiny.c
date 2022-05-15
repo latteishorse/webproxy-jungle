@@ -9,7 +9,7 @@
 
 /*
 * SW Jungle Week07
-* 12 - 19 May
+* 12 - 19 May, 2022
 */
 
 #include "csapp.h"
@@ -170,7 +170,6 @@ void read_requesthdrs(rio_t *rp)
 }
 
 // -----------------------------------------
-
 // uri를 받아 요청받은 파일의 이름(filename)과 요청 인자(cgiarg)를 채워준다.
 int parse_uri(char *uri, char *filename, char *cgiargs)
 {
@@ -188,6 +187,7 @@ int parse_uri(char *uri, char *filename, char *cgiargs)
     // '/' 뒤에 home.html을 붙여 해당 위치 해당 이름의 정적 컨텐츠가 출력된다.
     if (uri[strlen(uri)-1] == '/')
       strcat(filename, "home.html");
+      // strcat(filename, "form-adder.html"); // for test cgi
 
     /* 예시
       uri : /godzilla.jpg
@@ -269,6 +269,9 @@ void get_filetype(char *filename, char *filetype)
     strcpy(filetype, "image/png");
   else if (strstr(filename, ".jpg"))
     strcpy(filetype, "image/jpeg");
+  // HW 11.7
+  else if (strstr(filename, ".mp4"))
+    strcpy(filetype, "video/mp4");
   else
     strcpy(filetype, "text/plain");
 }
@@ -298,3 +301,5 @@ void serve_dynamic(int fd, char *filename, char *cgiargs)
   }
   Wait(NULL); /* Parent waits for and reaps child */
 }
+
+// -----------------------------------------

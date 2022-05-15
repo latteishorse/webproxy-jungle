@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Dynamic Contents</title>
+    </head>
+    <body>
+        <center>
+            <h1>CS:APP HW 11.10</h>
+            <h2>CGI adder HTML</h2> 
+
+            <h3>Please, Put number1 and number2 in the boxes below</h3>
+            <form action="/cgi-bin/adder" method="GET">
+                <p>number1: <input type="number" name="first"/></p>
+                <p>number2: <input type="number" name="second"/></p>
+                <p>answer = number1 + number2</p>
+                <p>You can get an answer by submitting it.</p>
+                <input type="submit" value="Submit"/>
+            </form>
+            <br>
+            <a href="http://ec2-54-180-114-106.ap-northeast-2.compute.amazonaws.com:8000/">  
+            <button>Home</button>  
+            </a>
+        </center>
+    </body>
+</html>
