@@ -15,8 +15,8 @@ int main(){
         *p = '\0';      // &를 \0로 바꿔주고
 
         /* input 받기 위한 부분 */
-        sscanf(buf, "first=%d", &n1); 
-        sscanf(p+1, "second=%d", &n2);
+        sscanf(buf, "f=%d", &n1); // 첫 인자
+        sscanf(p+1, "s=%d", &n2); // 두번째 인자
     }
 
     /* content라는 string에 응답 본체를 담는다. */

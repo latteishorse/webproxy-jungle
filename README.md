@@ -48,7 +48,7 @@
 - setting test env.
     - aws ec2 (ubuntu 20.04)
 - Study about Network
-    - Basic Network
+    - Network Basics
         - throughput, latency, network topology
         - Network Command
         - Network Protocol
