@@ -2,7 +2,7 @@
  * adder.c - a minimal CGI program that adds two numbers together
  */
 /* $begin adder */
-#include "csapp.h" // 위치 상단 폴더로
+#include "csapp.h" 
 
 int main(){
     char *buf, *p;

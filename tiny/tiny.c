@@ -11,8 +11,7 @@ int parse_uri(char *uri, char *filename, char *cgiargs);
 void serve_static(int fd, char *filename, int filesize);
 void get_filetype(char *filename, char *filetype);
 void serve_dynamic(int fd, char *filename, char *cgiargs);
-void clienterror(int fd, char *cause, char *errnum, char *shortmsg,
-                 char *longmsg);
+void clienterror(int fd, char *cause, char *errnum, char *shortmsg, char *longmsg);
 
 int main(int argc, char **argv) {
   int listenfd, connfd;
@@ -265,6 +264,8 @@ void get_filetype(char *filename, char *filetype)
   // HW 11.7
   else if (strstr(filename, ".mp4"))
     strcpy(filetype, "video/mp4");
+  else if (strstr(filename, ".mpeg"))
+    strcpy(filetype, "video/mpeg");
   else
     strcpy(filetype, "text/plain");
 }
@@ -300,6 +301,7 @@ void serve_dynamic(int fd, char *filename, char *cgiargs)
   if (Fork() == 0) { /* Child */
     /* Real server would set all CGI vars here */
     setenv("QUERY_STRING", cgiargs, 1);  // 1 -> 같은 인자 덮어쓰기 가능, 0 -> 불가
+    // setenv("REQUEST_METHOD", method, 1);
 
     // 클라이언트의 표준 출력을 CGI 프로그램의 표준 출력과 연결한다.
     // 이제 CGI 프로그램에서 printf하면 클라이언트에서 출력됨
@@ -308,5 +310,3 @@ void serve_dynamic(int fd, char *filename, char *cgiargs)
   }
   Wait(NULL); /* Parent waits for and reaps child */
 }
-
-// -----------------------------------------
