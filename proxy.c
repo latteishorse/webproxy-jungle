@@ -2,8 +2,8 @@
 #include "csapp.h"
 
 /* Recommended max cache and object sizes */
-#define MAX_CACHE_SIZE 1049000
-#define MAX_OBJECT_SIZE 102400
+#define MAX_CACHE_SIZE 1049000 // 최대 캐시 크기
+#define MAX_OBJECT_SIZE 102400 // 오브젝트 사이즈
 #define LRU_MAGIC_NUMBER 9876 // Least Recently Used
 // LRU: 가장 오랫동안 참조되지 않은 페이지를 교체하는 기법
 
@@ -45,7 +45,7 @@ typedef struct
   int LRU;
   int isEmpty;
 
-  int readCnt;  // count of readers
+  int readCnt;  // 카운트 -> 최근 방문 0, 방문 안할수록 +1
   sem_t wmutex;  // protects accesses to cache
   sem_t rdcntmutex;  // protects accesses to readcnt
 }cache_block;
@@ -232,8 +232,9 @@ void parse_uri(char *uri, char *hostname, char *path, int *port) {
   *port = 80; // 클라이언트에서 포트값을 안넣었을 경우
   char *pos = strstr(uri, "//"); // "http://"가 있으면 //부터 return 
   pos = pos!=NULL? pos+2:uri;
-
   char *pos2 = strstr(pos, ":");
+
+  /* port가 있으면*/
   if (pos2 != NULL) {
     *pos2 = '\0'; // ':'를 '\0'으로 변경
     sscanf(pos, "%s", hostname);
@@ -366,7 +367,7 @@ void cache_uri(char *uri, char *buf) {
   strcpy(cache.cacheobjs[i].cache_url, uri);
   cache.cacheobjs[i].isEmpty = 0;
   cache.cacheobjs[i].LRU = LRU_MAGIC_NUMBER;
-  cache_LRU(i); //
+  cache_LRU(i);
 
   writeAfter(i);
 }
