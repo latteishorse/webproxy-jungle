@@ -3,6 +3,47 @@
 > ### SW Jungle Week07 (12 ~ 19 May, 2022)
 
 ## TIL (Today I Learned)
+### `Thu. 19` : End of the week
+
+- Code Review (Jungle Reviewer)
+
+### `Wed. 18`
+
+- Concurrent Proxy
+
+![con](./img/con.png)
+
+
+- Cache Server
+
+![cache](./img/cac.png)
+
+
+- 우아한Tech Youtube [10분 테코톡]
+    - 🌷 코다의 Process vs Thread
+    - 🧲 코일의 Web Socket
+    - 🎲  와일더의 Mutex vs Semaphore
+
+### `Tue. 17`
+
+- Make Sequential Proxy server
+
+![seq](./img/seq.png)
+
+- 우아한Tech Youtube [10분 테코톡]
+    - 🔮 히히의 OSI 7 Layer
+    - 🔮 수리의 TCP/IP
+
+### `Mon. 16`
+- Study about Proxy
+    - what is proxy?
+    - how proxy work?
+- why we use Proxy?
+    - pros and cons
+    - Application example
+- 우아한Tech Youtube [10분 테코톡]
+    - 🌟 조앤의 Forward Proxy vs Reverse Proxy vs Load Balancer
+
 ### `Sun. 15`
 
 - make TINY web server
@@ -114,4 +155,4 @@ tiny
 </div>
 </details>
 
-*This page was most recently updated on May 15th, 2022*
+*This page was most recently updated on May 18th, 2022*
