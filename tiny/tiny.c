@@ -229,6 +229,7 @@ int parse_uri(char *uri, char *filename, char *cgiargs)
 응답 라인과 헤더를 작성하고 서버에게 보낸다. 
 그 후 정적 컨텐츠 파일을 읽어 그 응답 본체를 클라이언트에 보낸다.
 */
+
 void serve_static(int fd, char *filename, int filesize)
 {
   int srcfd;
@@ -250,11 +251,11 @@ void serve_static(int fd, char *filename, int filesize)
 
   /* Send response body to client */
   srcfd = Open(filename, O_RDONLY, 0); // filename의 이름을 갖는 파일을 읽기 권한으로 불러온다.
-  srcp = Mmap(0, filesize, PROT_READ, MAP_PRIVATE, srcfd, 0); // 메모리에 파일 내용을 동적할당한다.
+  srcp = (char*)Malloc(filesize);  // 파일 크기만큼의 메모리를 동적할당한다.
+  Rio_readn(srcfd, srcp, filesize);   // filename 내용을 동적할당한 메모리에 쓴다.
   Close(srcfd); // 파일을 닫는다.
-  Rio_writen(fd, srcp, filesize);  //
-  // 해당 메모리에 있는 파일 내용들을 fd에 보낸다(읽는다).
-  Munmap(srcp, filesize);
+  Rio_writen(fd, srcp, filesize);  // 해당 메모리에 있는 파일 내용들을 클라이언트에 보낸다(읽는다).
+  free(srcp);
 }
 
 /* get_filetype()
